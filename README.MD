@@ -7,7 +7,14 @@ Currently a basic use case is implemented traversing the graph:
 - select one of the stores
 - list all aisles of that store
 
-More complex use cases with a tighter integration of the KITT knowledge graph and the Watson Assistant skill are conceivable.
+More complex use cases with a tighter integration of the KITT knowledge graph and the [IBM Watson Assistant](https://www.ibm.com/cloud/watson-assistant/) skill are conceivable.
+
+# Prerequisites
+It is expected that you have a KITT system that you can use. At the time of writing KITT is not a product or available for download, though. Please contact an IBM representative, if you are interested.
+
+Ideally you have some prior knowledge of 
+- IBM Watson Assistant and 
+- Node-RED
 
 # Architecture
 ![Architecture](WA-KITT-Architecture.jpg)
