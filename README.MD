@@ -26,30 +26,49 @@ Ideally you have some prior knowledge of
 
 # Steps
 ## KITT
-- it is assumed that a KITT instance is deployed (not covered here)
-- note down the url, user, password, and graph name
+It is assumed that a KITT instance is deployed, so this is not covered here. In order to use KITT you need to
+- note down the url, user, password, and the graph name.
+
 The KITT instance comes with a Retail_Store graph, we'll be using the *store* instance *Dublin01* and *aisle* instance *Grocerie*.
 ![KITT](kitt.jpg)
 
 ## Node-RED Application
-- create a Node-RED instance and import the [Node-RED flow](node-red-flow.json)
+Node-RED will be used as application platform.
+- create a Node-RED instance and import the [Node-RED flow](node-red-flow.json) either locally (it needs to be accessible from the internet, though) or on the [IBM Cloud](https://nodered.org/docs/getting-started/ibmcloud):
 - deploy the Node-RED flow
-- adapt the **Initialize Data** node (parameters of the KITT instance)
+- adapt the **Initialize Data** node, enter here the KITT parameters
+
 ![Node-RED flow](node-red-flow.jpg)
 
 ### Flow
-1. The *initialize data* node is called upon startup of the flow and stores parameters in the global environment of the flow.
-2. The */wahandler* node receives requests from the Watson Assistant webhook and do request specific initialization (e.g. store the name of the request); throw an error if the request name is unknown
-3. get a bearer token 
-4. query against KITT using the bearer token
-5. create the result/response for the Watson Assistant service depending on the request name and return to the WA service
+The flow consist of the following parts:
+
+The *initialize data* node is called upon startup of the flow and stores parameters in the global environment of the flow.
+
+The */wahandler* node receives requests from the Watson Assistant webhook and do request specific initialization (e.g. store the name of the request). In principal all requests are processed similarly:
+
+- pre-preparation of the KITT request: The *request* parameter of the HTTP request from the WA webhook controls, what KITT API will be called and what data is needed;  it also throws an error, if the request name is unknown
+- authentication via a bearer token 
+- the actual KITT request
+- process the KITT results and return them to the Watson Assistant 
 
 ## Watson Assistant
+[Watson Assistant](https://www.ibm.com/cloud/watson-assistant/) is IBM's chabot platform.
 - create a WA instance
 - create an English skill and import the [JSON file](skill-Retail-Store.json)
 - adapt the webhook: http://node-red-address/wahandler
 
 ![wa.jpg](wa.jpg)
+
+
+Chatbot: Hello. How can I help you?
+User: list all stores
+C: I found the following stores: Dublin01, which one do you want to select?
+U: Dublin01
+C: thank you
+U: what aisles are there?
+C: I found the following aisles: Groceries, which one do you want to select?
+U: Groceries
 
 If an utterance like "show me all stores" is detected the Node-RED flow is called via a Webhook.
 The child node prompts for the store name to be selected.
