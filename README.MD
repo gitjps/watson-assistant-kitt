@@ -2,6 +2,9 @@
 Graph databases can be used to control chatbots, transfer knowledge between chatbot solutions, bridge semantic domains etc.
 This repo contains a simple technical integration between a chatbot based on the Watson Assistant service and the [KITT](https://www.ibm.com/blogs/internet-of-things/iot-digital-twins-foster-innovation/) solution that is the foundation of the Digital Twin solution of IBM Research, Dublin. 
 It uses the pre-installed *Retail_Store* graph, that contains some sample data (store, aisle, sensors, etc).
+
+![Retail Store Graph](RetailStore.jpg)
+
 Currently a basic use case is implemented traversing the graph:
 - list all stores
 - select one of the stores
