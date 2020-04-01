@@ -41,16 +41,14 @@ Node-RED will be used as application platform.
 ![Node-RED flow](node-red-flow.jpg)
 
 ### Flow
-The flow consist of the following parts:
+In principal all requests are processed similarly. The flow consist of the following parts:
 
-The *initialize data* node is called upon startup of the flow and stores parameters in the global environment of the flow.
-
-The */wahandler* node receives requests from the Watson Assistant webhook and do request specific initialization (e.g. store the name of the request). In principal all requests are processed similarly:
-
-- pre-preparation of the KITT request: The *request* parameter of the HTTP request from the WA webhook controls, what KITT API will be called and what data is needed;  it also throws an error, if the request name is unknown
-- authentication via a bearer token 
-- the actual KITT request
-- process the KITT results and return them to the Watson Assistant 
+- The *initialize data* node is called upon startup of the flow and stores parameters in the global environment of the flow
+- The */wahandler* node receives requests from the Watson Assistant webhook and performs request specific initialization (e.g. store the name of the request)
+- Preparation of the KITT request: The *request* parameter of the HTTP request from the WA webhook controls, what KITT API will be called and what data is needed;  it also throws an error, if the request name is unknown
+- Authentication via a bearer token 
+- The actual KITT request
+- Processing the KITT results and return them to the Watson Assistant 
 
 ## Watson Assistant
 [Watson Assistant](https://www.ibm.com/cloud/watson-assistant/) is IBM's chabot platform.
@@ -60,15 +58,15 @@ The */wahandler* node receives requests from the Watson Assistant webhook and do
 
 ![wa.jpg](wa.jpg)
 
-
-Chatbot: Hello. How can I help you?
-User: list all stores
-C: I found the following stores: Dublin01, which one do you want to select?
-U: Dublin01
-C: thank you
-U: what aisles are there?
-C: I found the following aisles: Groceries, which one do you want to select?
-U: Groceries
+The imolemented dialog would be:
+- Chatbot: Hello. How can I help you?
+- User: list all stores (intent *stores*)
+- C: I found the following stores: Dublin01, which one do you want to select?
+- U: Dublin01
+- C: thank you
+- U: what aisles are there? (intent *isles*)
+- C: I found the following aisles: Groceries, which one do you want to select?
+- U: Groceries
 
 If an utterance like "show me all stores" is detected the Node-RED flow is called via a Webhook.
 The child node prompts for the store name to be selected.
