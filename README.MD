@@ -18,8 +18,9 @@ More complex use cases with a tighter integration of the KITT knowledge graph an
 It is expected that you have a KITT system that you can use. At the time of writing KITT is not a product or available for download, though. Please contact an IBM representative, if you are interested.
 
 Ideally you have some prior knowledge of 
-- IBM Watson Assistant and 
-- Node-RED
+- IBM Watson Assistant, 
+- Node-RED, and
+- KITT.
 
 # Architecture
 ![Architecture](WA-KITT-Architecture.jpg)
@@ -73,7 +74,7 @@ The child node prompts for the store name to be selected.
 
 # Summary
 
-In this liitel tutorial I showed how to control the chatbot dialog with a graph database using a low code prototyping platform Node-RED. More complex dialogs are possible as well, of course.
+In this tutorial I showed how to control the chatbot dialog with a graph database using a low code prototyping platform Node-RED. More complex dialogs are possible as well, of course.
 
 # Related links
  - [Integrate a building model with TRIRIGA Building Insights](https://developer.ibm.com/patterns/integrate-bim-model-tririga-building-insights/)
