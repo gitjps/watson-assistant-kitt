@@ -58,7 +58,7 @@ In principal all requests are processed similarly. The flow consist of the follo
 
 ![wa.jpg](wa.jpg)
 
-The imolemented dialog would be:
+The implemented dialog would be:
 - Chatbot: Hello. How can I help you?
 - User: list all stores (intent *stores*)
 - C: I found the following stores: Dublin01, which one do you want to select?
@@ -73,4 +73,8 @@ The child node prompts for the store name to be selected.
 
 # Summary
 
+In this liitel tutorial I showed how to control the chatbot dialog with a graph database using a low code prototyping platform Node-RED. More complex dialogs are possible as well, of course.
+
 # Related links
+ - [Integrate a building model with TRIRIGA Building Insights](https://developer.ibm.com/patterns/integrate-bim-model-tririga-building-insights/)
+ - [Build a chatbot using the Watson Assistant search skill](https://developer.ibm.com/patterns/enhance-customer-helpdesk-with-smart-document-understanding-using-search-skill/)
